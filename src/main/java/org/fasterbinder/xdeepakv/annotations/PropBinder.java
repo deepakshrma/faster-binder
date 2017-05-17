@@ -13,8 +13,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PropBinder {
     String path();
+
     PropBinderType type() default PropBinderType.JSON;
-    enum PropBinderType{
+
+    enum PropBinderType {
         JSON, YML
     }
 }

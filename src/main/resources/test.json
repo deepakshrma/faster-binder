@@ -1,7 +1,7 @@
 {
   "app":{
-    "endpoint": "test",
-    "somefield": "somefield",
-    "test": "lowT"
+    "endpoint": "http://test.com",
+    "intval": 12,
+    "doubleval": 1.3
   }
 }

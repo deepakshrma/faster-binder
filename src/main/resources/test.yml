@@ -1,4 +1,4 @@
 app:
-  endpoint: "test"
-  somefield: "somefield"
-  test: "low"
+  endpoint: "http://help.com"
+  intval: 12
+  doubleval: 12.2
