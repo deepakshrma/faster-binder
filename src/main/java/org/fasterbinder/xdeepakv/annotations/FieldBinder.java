@@ -1,4 +1,4 @@
-package org.fasteryaml.xdeepakv;
+package org.fasterbinder.xdeepakv.annotations;
 
 /**
  * Created by dvishwakarma on 5/17/2017.
@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 
 @Target(value = ElementType.FIELD)
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface YAMLBinder {
+public @interface FieldBinder {
     String key();
 }

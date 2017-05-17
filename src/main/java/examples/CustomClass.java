@@ -1,23 +1,25 @@
 package examples;
 
-import org.fasteryaml.xdeepakv.FiledMapper;
-import org.fasteryaml.xdeepakv.YAMLBinder;
+import org.fasterbinder.xdeepakv.FasterBinder;
+import org.fasterbinder.xdeepakv.annotations.FieldBinder;
+import org.fasterbinder.xdeepakv.annotations.PropBinder;
 
 /**
  * Created by dvishwakarma on 5/17/2017.
  */
+@PropBinder(path = "./src/main/resources/test.yml", type = PropBinder.PropBinderType.YML)
 public class CustomClass {
-    @YAMLBinder(key = "app.endpoint")
+    @FieldBinder(key = "app.endpoint")
     public String endpoint;
 
-    @YAMLBinder(key = "app.somefield")
+    @FieldBinder(key = "app.somefield")
     public String somefield;
 
-    @YAMLBinder(key = "app.test")
+    @FieldBinder(key = "app.test")
     public String test;
 
     public CustomClass(){
-        FiledMapper.buildObject(this);
+        FasterBinder.build(this);
     }
     @Override
     public String toString() {

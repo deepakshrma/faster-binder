@@ -1,0 +1,7 @@
+{
+  "app":{
+    "endpoint": "test",
+    "somefield": "somefield",
+    "test": "lowT"
+  }
+}
