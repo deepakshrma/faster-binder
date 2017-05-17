@@ -1,0 +1,4 @@
+app:
+  endpoint: "test"
+  somefield: "somefield"
+  test: "low"
