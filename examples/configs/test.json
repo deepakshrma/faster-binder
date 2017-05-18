@@ -1,0 +1,7 @@
+{
+  "app":{
+    "endpoint": "http://test.com",
+    "intval": 12,
+    "doubleval": 1.3
+  }
+}

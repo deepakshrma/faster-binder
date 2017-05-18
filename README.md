@@ -1,34 +1,53 @@
 ## Faster Binder
 
-A Java lib which bind POJO with a JSON/YML in easy way. API is build on top of Reflection, It will fails on load. Rather than giving null pointer exception at runtime.
+A Java lib which bind POJO/Config class with a JSON/YML properties in easy way. API is build on top of Reflection. Means, It will throw exceptions on load class load rather than giving null pointer exception at runtime.
 
+## Dependencies
+* jackson-databind
+* jackson-dataformat-yaml
+* json-path
+```xml
+<jackson.version>2.3.0</jackson.version>
+<jackson.data.version>2.2.3</jackson.data.version>
+<jpath.version>2.2.0</jpath.version>
+```
 ### How to use
+It's very simple to use. Just create a POJO class with **@PropBinder, @FieldBinder** annotation.
+1. **@PropBinder:** Annotation is to tell compiler that given class can be use to bind properties. It accept 2 parameter.
+    a). **path**, Absolute path of the JSON/YAML file.
+    b). **type**, To tell what kind file binder needs to be done. Currently API supports only JSON and YAML file.
+2. **@FieldBinder** Annotation is to tell comple that given fields will be bind to given properties file. It accept one parameter
+    **key**, Here key tells key value needs to be bind. It supports json-path expressions.
+* With fat jar, Import **faster-binder\dist\faster-binder-1.0.2.jar**
+* Without fat jar, Import **faster-binder\dist\faster-binder-basic-1.0.2.jar** (with above mentioned dependency jars)
 
-It's very simple to use. Just create a pojo class with @PropBinder, @FieldBinder annotation. Currently supporting JSON and YAML file.
+More on JSON-PATH: https://github.com/json-path/JsonPath
 
-Example: faster-binder/src/main/java/examples
-
+Example: faster-binder/examples
 ```java
 
 //CustomClass.java: POJO class
-package examples;
-
 import org.fasterbinder.xdeepakv.FasterBinder;
 import org.fasterbinder.xdeepakv.annotations.FieldBinder;
 import org.fasterbinder.xdeepakv.annotations.PropBinder;
 
-@PropBinder(path = "./src/main/resources/test.json", type = PropBinder.PropBinderType.JSON)
+/**
+ * Created by dvishwakarma on 5/17/2017.
+ */
+
+//Resource Path Name and type
+@PropBinder(path = "./configs/test.json", type = PropBinder.PropBinderType.JSON)
 public class CustomClass {
-    @FieldBinder(key = "app.endpoint")
+    @FieldBinder(key = "$.app.endpoint")
     public String endpoint;
 
-    @FieldBinder(key = "app.intval")
+    @FieldBinder(key = "$.app.intval")
     public int intval;
 
     //Do nothing with it
     public int intval2;
 
-    @FieldBinder(key = "app.doubleval")
+    @FieldBinder(key = "$.app.doubleval")
     public Double doubleval;
 
     public CustomClass() {
@@ -60,7 +79,19 @@ public class Demo {
 
 /**
 * Output:
-* CustomClass{endpoint='http://test.co,', intval=12, intval2=0, doubleval=1.3}
+* CustomClass{endpoint='http://test.com', intval=12, intval2=0, doubleval=1.3}
 * endpoint:http://test.com
 */
+```
+
+### How to compile and run given example
+
+```bash
+$cd examples
+$javac -cp ".;./../dist/faster-binder-dist-1.0.2.jar" Demo.java
+$java -cp ".;./../dist/faster-binder-dist-1.0.2.jar" Demo
+#######################
+#########OR############
+#######################
+$ sh TestExample.sh
 ```

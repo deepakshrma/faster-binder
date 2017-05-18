@@ -1,0 +1,4 @@
+app:
+  endpoint: "http://help.com"
+  intval: 12
+  doubleval: 12.2

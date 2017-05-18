@@ -5,39 +5,82 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.fasteryaml.xdeepakv</groupId>
-    <artifactId>binder</artifactId>
-    <version>1.0.1</version>
-<dependencies>
+    <artifactId>faster-binder</artifactId>
+    <version>${jar.version}</version>
+    <properties>
+        <jar.version>1.0.2</jar.version>
+        <jar.name>faster-binder</jar.name>
+        <jdk.version>1.6</jdk.version>
+        <jackson.version>2.3.0</jackson.version>
+        <jackson.data.version>2.2.3</jackson.data.version>
+        <jpath.version>2.2.0</jpath.version>
+    </properties>
+
+    <dependencies>
     <dependency>
         <groupId>com.fasterxml.jackson.dataformat</groupId>
         <artifactId>jackson-dataformat-yaml</artifactId>
-        <version>2.3.0</version>
+        <version>${jackson.version}</version>
     </dependency>
     <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.2.3</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.4</version>
+        <version>${jackson.data.version}</version>
     </dependency>
     <dependency>
         <groupId>com.jayway.jsonpath</groupId>
         <artifactId>json-path</artifactId>
-        <version>2.2.0</version>
+        <version>${jpath.version}</version>
     </dependency>
 </dependencies>
     <build>
+        <finalName>${jar.name}-basic-${jar.version}</finalName>
         <plugins>
+
+            <!-- download source code in Eclipse, best practice -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>false</downloadJavadocs>
+                </configuration>
+            </plugin>
+            <!-- Set a compiler level -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                 </configuration>
+            </plugin>
+            <!-- Maven Assembly Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <!-- get all project dependencies -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <outputDirectory>dist</outputDirectory>
+                    <finalName>${jar.name}-${jar.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- bind to the packaging phase -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,5 +1,3 @@
-package examples;
-
 import org.fasterbinder.xdeepakv.FasterBinder;
 import org.fasterbinder.xdeepakv.annotations.FieldBinder;
 import org.fasterbinder.xdeepakv.annotations.PropBinder;
@@ -7,18 +5,18 @@ import org.fasterbinder.xdeepakv.annotations.PropBinder;
 /**
  * Created by dvishwakarma on 5/17/2017.
  */
-@PropBinder(path = "./src/main/resources/test.json", type = PropBinder.PropBinderType.JSON)
+@PropBinder(path = "./configs/test.json", type = PropBinder.PropBinderType.JSON)
 public class CustomClass {
-    @FieldBinder(key = "app.endpoint")
+    @FieldBinder(key = "$.app.endpoint")
     public String endpoint;
 
-    @FieldBinder(key = "app.intval")
+    @FieldBinder(key = "$.app.intval")
     public int intval;
 
     //Do nothing with it
     public int intval2;
 
-    @FieldBinder(key = "app.doubleval")
+    @FieldBinder(key = "$.app.doubleval")
     public Double doubleval;
 
     public CustomClass() {
