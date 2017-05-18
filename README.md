@@ -1,6 +1,6 @@
 ## Faster Binder
 
-A Java lib which bind POJO/Config class with a JSON/YML properties in easy way. API is build on top of Reflection. Means, It will throw exceptions on load class load rather than giving null pointer exception at runtime.
+A Java lib which binds POJO/Config class with a JSON/YML properties in an easy way. API is built on top of Reflection. Means, It will throw exceptions on load class load rather than be throwing null pointer exception at runtime.
 
 ## Dependencies
 * jackson-databind-2.2.3
