@@ -3,8 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.fasteryaml.xdeepakv</groupId>
+    <groupId>com.github.deepakshrma</groupId>
     <artifactId>faster-binder</artifactId>
     <version>${jar.version}</version>
     <properties>
