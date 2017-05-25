@@ -1,16 +1,12 @@
 ## Faster Binder
 
-A Java lib which bind POJO/Config class with a JSON/YML properties in easy way. API is build on top of Reflection. Means, It will throw exceptions on load class load rather than giving null pointer exception at runtime.
+A Java lib which binds POJO/Config class with a JSON/YML properties in an easy way. API is built on top of Reflection. Means, It will throw exceptions on load class load rather than be throwing null pointer exception at runtime.
 
 ## Dependencies
-* jackson-databind
-* jackson-dataformat-yaml
-* json-path
-```xml
-<jackson.version>2.3.0</jackson.version>
-<jackson.data.version>2.2.3</jackson.data.version>
-<jpath.version>2.2.0</jpath.version>
-```
+* jackson-databind-2.2.3
+* jackson-dataformat-yaml-2.3.0
+* json-path-2.2.0
+
 ### How to use
 It's very simple to use. Just create a POJO class with **@PropBinder, @FieldBinder** annotation.
 1. **@PropBinder:** Annotation is to tell compiler that given class can be use to bind properties. It accept 2 parameter.
@@ -23,7 +19,8 @@ It's very simple to use. Just create a POJO class with **@PropBinder, @FieldBind
 
 More on JSON-PATH: https://github.com/json-path/JsonPath
 
-Example: faster-binder/examples
+
+### Example: faster-binder/examples
 ```java
 
 //CustomClass.java: POJO class
