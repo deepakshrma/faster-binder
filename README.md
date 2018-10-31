@@ -84,9 +84,10 @@ public class Demo {
 ### How to compile and run given example
 
 ```bash
-$cd examples
-$javac -cp ".;./../dist/faster-binder-dist-1.0.2.jar" Demo.java
-$java -cp ".;./../dist/faster-binder-dist-1.0.2.jar" Demo
+cd examples
+javac -cp "../dist/faster-binder-1.0.3.jar" CustomClass.java
+javac -cp "../dist/faster-binder-1.0.3.jar:." Demo.java
+java -cp "../dist/faster-binder-1.0.3.jar:." Demo
 #######################
 #########OR############
 #######################

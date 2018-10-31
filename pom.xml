@@ -7,11 +7,11 @@
     <artifactId>faster-binder</artifactId>
     <version>${jar.version}</version>
     <properties>
-        <jar.version>1.0.2</jar.version>
+        <jar.version>1.0.3</jar.version>
         <jar.name>faster-binder</jar.name>
         <jdk.version>1.6</jdk.version>
-        <jackson.version>2.3.0</jackson.version>
-        <jackson.data.version>2.2.3</jackson.data.version>
+        <jackson.version>2.9.7</jackson.version>
+        <jackson.data.version>2.9.7</jackson.data.version>
         <jpath.version>2.2.0</jpath.version>
     </properties>
 
